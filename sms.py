@@ -24,6 +24,59 @@ class SendSms():
         else:
             self.mail = ''.join(choice(ascii_lowercase) for i in range(22))+"@gmail.com"
 
+        # reset threshold: 5 başarılı gönderim -> self.adet artışı 5'er olduğundan eşik 25
+        self._reset_threshold = 25
+
+        # dead method'ları tutar; bir daha denenmeyecekler
+        self._dead_methods = set()
+
+        # her method çağrısından sonra otomatik kontrol yapacak şekilde sarmala
+        self._wrap_methods_with_reset()
+
+
+    def _reset_self(self):
+        # artık sadece sayaçı sıfırlıyor; tc/mail korunuyor (yeni tc istenmiyor)
+        try:
+            self.adet = 0
+        except Exception:
+            pass
+
+
+    def _maybe_reset(self):
+        try:
+            if self.adet >= self._reset_threshold:
+                self._reset_self()
+        except Exception:
+            pass
+
+
+    def _wrap_methods_with_reset(self):
+        # __init__ dışında tüm public callable attribute'ları sar ve her dönüşten sonra _maybe_reset çağır
+        for name in dir(self):
+            if name.startswith("_"):
+                continue
+            attr = getattr(self, name)
+            if callable(attr):
+                if getattr(attr, "_wrapped_for_reset", False):
+                    continue
+                def make_wr(orig, nm=name):
+                    def wrapped(*args, **kwargs):
+                        # daha önce işlevsiz olduğu işaretlenmişse atla
+                        if nm in self._dead_methods:
+                            return None
+                        before = self.adet
+                        try:
+                            return orig(*args, **kwargs)
+                        finally:
+                            # adet artmadıysa bu endpoint muhtemelen SMS göndermiyor -> işaretle
+                            if self.adet == before:
+                                self._dead_methods.add(nm)
+                            # her çağrı sonrası eşik kontrolü
+                            self._maybe_reset()
+                    wrapped._wrapped_for_reset = True
+                    return wrapped
+                setattr(self, name, make_wr(attr))
+
 
     #kahvedunyasi.com
     def KahveDunyasi(self):    
@@ -40,7 +93,6 @@ class SendSms():
         except:
             pass
        
-
     #wmf.com.tr
     def Wmf(self):
         try:
@@ -52,7 +104,6 @@ class SendSms():
                 pass
         except:
             pass
-    
     
     #bim
     def Bim(self):
