@@ -25,7 +25,7 @@ class SendSms():
             self.mail = ''.join(choice(ascii_lowercase) for i in range(22))+"@gmail.com"
 
         # reset threshold: 5 başarılı gönderim -> self.adet artışı 5'er olduğundan eşik 25
-        self._reset_threshold = 25
+        self._reset_threshold = 5
 
         # her method çağrısından sonra otomatik kontrol yapacak şekilde sarmala
         self._wrap_methods_with_reset()
